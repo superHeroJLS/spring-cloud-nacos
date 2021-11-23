@@ -1,0 +1,28 @@
+server:
+  port: 8901
+spring:
+  application:
+    name: consumer
+  cloud:
+    nacos:
+      config:
+        #server-addr: xiaobei.nacos.a:9000,xiaobei.nacos.b:9001,xiaobei.nacos.c:9002       # Nacos Server集群配置
+        server-addr: 10.60.63.233:8848
+        namespace: example           # 空间id名称
+        group: example               # 分组名称
+        username: nacos            # Nacos用户名
+        password: nacos            # Nacos密码
+        prefix: ${spring.application.name} # 配置文件前缀(格式：${prefix}-${spring.profiles.active}.${file-extension} ,如果profilesActive为空，则没有'-')
+        file-extension: yml                # 配置文件后缀
+        encode: UTF-8                      # 内容编码
+        refresh-enabled: true              # 启用自动刷新
+      discovery:
+        server-addr: ${spring.cloud.nacos.config.server-addr}
+        namespace: ${spring.cloud.nacos.config.namespace}
+        group: ${spring.cloud.nacos.config.group}
+        username: ${spring.cloud.nacos.config.username}
+        password: ${spring.cloud.nacos.config.password}
+        log-name: ${spring.application.name}
+        weight: 1                           # 权重（值从1到100，值越大，权重越大）
+        metadata:
+          devoleper: jiangls
