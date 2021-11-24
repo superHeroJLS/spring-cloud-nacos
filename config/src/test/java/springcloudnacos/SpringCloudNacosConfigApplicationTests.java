@@ -1,10 +1,10 @@
-package com.example.springcloudnacos;
+package springcloudnacos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringCloudNacosApplicationTests {
+class SpringCloudNacosConfigApplicationTests {
 
     @Test
     void contextLoads() {
