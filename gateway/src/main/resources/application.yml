@@ -1,0 +1,34 @@
+# 以下gateway的配置可以放至nacos中，分布式系统中推荐放在nacos中
+#spring:
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#        # 服务网关开启服务注册和发现的功能，并且服务网关自动根据服务发现为每一个服务创建了一个路由，
+#        # 这个路由将以服务名开头的请求路径转发到对应的服务中，且spring cloud gateway默认打开了负载均衡。
+#        enabled: false
+#        lower-case-service-id: false
+#      global-filter:
+#        load-balancer-client:
+#          enabled: true
+#      routes:
+#        -
+#          id: consumer
+#          #route 负载均衡地址
+#          uri: lb://consumer
+#          predicates:
+#            -
+#              Path=/con/**
+#          filters:
+#            -
+#              # StripPrefix的过滤器在转发之前将Path最前面的/con去掉
+#              StripPrefix=1
+#        -
+#          id: provider
+#          #route 负载均衡地址
+#          uri: lb://provider
+#          predicates:
+#            - Path=/pro/**
+#          filters:
+#            - # StripPrefix的过滤器在转发之前将Path最前面的/pro去掉
+#              StripPrefix=1
