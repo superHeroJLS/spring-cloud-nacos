@@ -6,6 +6,7 @@
         <module>config</module>
         <module>service-provider</module>
         <module>service-consumer</module>
+        <module>gateway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
