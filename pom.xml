@@ -7,6 +7,8 @@
         <module>service-provider</module>
         <module>service-consumer</module>
         <module>gateway</module>
+        <module>service-consumer-1</module>
+        <module>service-provider-1</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

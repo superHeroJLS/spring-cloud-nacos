@@ -17,8 +17,11 @@ public class ConfigController {
     @Value("${useLocalCache:false}")
     private boolean useLocalCache;
 
-    @Value("${spring.application.name:n}")
+    @Value("${spring.application.name:default}")
     private String applicationName;
+
+    @Value("${server.port}")
+    private Integer port;
 
     @RequestMapping("/get")
     public boolean get() {
@@ -27,6 +30,6 @@ public class ConfigController {
 
     @RequestMapping("/getName")
     public String getName() {
-        return this.applicationName;
+        return "i am " + this.applicationName + " from port " + this.port;
     }
 }

@@ -1,8 +1,8 @@
 server:
-  port: 8801
+  port: 8902
 spring:
   application:
-    name: provider
+    name: consumer
   cloud:
     nacos:
       config:
