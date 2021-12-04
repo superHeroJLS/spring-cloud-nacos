@@ -9,6 +9,7 @@
         <module>gateway</module>
         <module>service-consumer-1</module>
         <module>service-provider-1</module>
+        <module>gateway-guide-from-springio</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

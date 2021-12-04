@@ -1,4 +1,6 @@
+
 # 以下gateway的配置可以放至nacos中，分布式系统中推荐放在nacos中
+
 #spring:
 #  cloud:
 #    gateway:
