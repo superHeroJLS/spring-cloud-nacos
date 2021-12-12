@@ -1,7 +1,16 @@
 
 # 以下gateway的配置可以放至nacos中，分布式系统中推荐放在nacos中
 
+# 设置Hystrix的全局超时信息
+#hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 5000
+#
+## RequestRateLimiterGatewayFilterFactory的实现依赖于 Redis
 #spring:
+#  redis:
+#    host: 10.60.63.233
+#    port: 6379
+#    password: test123
+#    database: 0
 #  cloud:
 #    gateway:
 #      discovery:
@@ -25,6 +34,22 @@
 #            -
 #              # StripPrefix的过滤器在转发之前将Path最前面的/con去掉
 #              StripPrefix=1
+#            -
+#              AddResponseHeader=X-Response-Foo, Bar
+#            -
+#              # 熔断降级过滤器，需要引入spring-cloud-starter-netflix-hystrix依赖
+#              name: Hystrix
+#              args:
+#                name: default
+#                # 配置fallbackUri，支持路由熔断后的降级处理，降级后请求会转发到fallbackUri配置的路径，目前只支持forward:的URI协议
+#                fallbackUri: forward:/fallback
+#            -
+#              # 限流过滤器，现在配置了好像没起作用
+#              name: RequestRateLimiter
+#              args:
+#                key-resolver: '#{@hostAddrKeyResolver}'
+#                redis-rate-limiter.replenishRate: 1
+#                redis-rate-limiter.burstCapacity: 3
 #        -
 #          id: provider
 #          #route 负载均衡地址

@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
  * @date 2021/11/30
  */
 @SpringBootApplication
-@EnableConfigurationProperties(Application.UriConfiguration.class)
+//@EnableConfigurationProperties(Application.UriConfiguration.class)
 public class Application {
 
     public static void main(String[] args) {
@@ -53,8 +53,8 @@ public class Application {
      * @return
      */
     @Bean
-    public RouteLocator myRoutes2(RouteLocatorBuilder builder, UriConfiguration uriConfiguration) {
-        String httpUri = uriConfiguration.getHttpbin();
+    public RouteLocator myRoutes2(RouteLocatorBuilder builder) {
+        String httpUri = "http://httpbin.org:80";
 
         return builder.routes()
                 .route(p -> p
@@ -69,20 +69,20 @@ public class Application {
     }
 
 
-    @Component
-    @ConfigurationProperties(prefix = "spring")
-    public class UriConfiguration {
-
-        private String httpbin = "http://httpbin.org:80";
-
-        public String getHttpbin() {
-            return httpbin;
-        }
-
-        public void setHttpbin(String httpbin) {
-            this.httpbin = httpbin;
-        }
-    }
+//    @Component
+//    @ConfigurationProperties(prefix = "spring")
+//    public class UriConfiguration {
+//
+//        private String httpbin = "http://httpbin.org:80";
+//
+//        public String getHttpbin() {
+//            return httpbin;
+//        }
+//
+//        public void setHttpbin(String httpbin) {
+//            this.httpbin = httpbin;
+//        }
+//    }
 
     /**
      * 一个fallback controller
